@@ -1,0 +1,17 @@
+1.What is Web Technology?
+-how to websites and app work in an web technology 
+    1.Frontend
+    2.Backend
+    3.Web Servers
+    4.Protocols
+2. Real-time examples of Web Technology?
+-E-Commerce Websites
+   example:Amazon,Flipkart,Meesho
+   >cart, online payment, order tracking
+3.What is JavaScript?
+-JavaScript is a scripting language used to make web pages interactive and dynamic.
+4.Which file extension is used for JavaScript?
+-.js
+5.Why do we use Node.js?
+-Node.js is used to execute JavaScript on the server side for building fast and scalable applications
+   
