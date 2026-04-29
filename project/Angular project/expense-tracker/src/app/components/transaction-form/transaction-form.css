@@ -1,0 +1,51 @@
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.type-selector {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-card.selected {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--accent-income);
+  color: var(--accent-income);
+}
+
+.radio-card.expense.selected {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--accent-expense);
+  color: var(--accent-expense);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

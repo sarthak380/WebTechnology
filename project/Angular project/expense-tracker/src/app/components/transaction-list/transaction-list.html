@@ -1,0 +1,39 @@
+<div class="list-container">
+  <div class="header-section">
+    <h2>All Transactions</h2>
+    <span class="badge">{{ transactions().length }} Total</span>
+  </div>
+
+  @if (transactions().length === 0) {
+    <div class="empty-state glass-card">
+      <div class="empty-icon">📁</div>
+      <h3>No transactions found</h3>
+      <p>Start tracking your expenses and incomes today.</p>
+    </div>
+  } @else {
+    <div class="transaction-grid">
+      @for (tx of transactions(); track tx.id) {
+        <div class="transaction-card glass-card" [class.is-expense]="tx.type === 'expense'">
+          <div class="tx-main">
+            <div class="tx-icon">
+              {{ tx.type === 'income' ? '📈' : '📉' }}
+            </div>
+            <div class="tx-details">
+              <h3>{{ tx.title }}</h3>
+              <span class="tx-date">{{ tx.date | date:'medium' }}</span>
+            </div>
+          </div>
+          
+          <div class="tx-actions">
+            <div class="tx-amount" [class.text-expense]="tx.type === 'expense'" [class.text-income]="tx.type === 'income'">
+              {{ tx.type === 'income' ? '+' : '-' }}{{ tx.amount | currency:'INR' }}
+            </div>
+            <button class="delete-btn" (click)="deleteTransaction(tx.id)" title="Delete Transaction">
+              🗑️
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,8 @@
+// activity 3 : arrow function and simple function difference(this keyword )
+// write a code using 2 arrow functions with example
+// switch case
+//how to use truthy and falsi value with js
+// how  to use ternary operators
+// loops in js how to use that in array
+// difference between for of and forin
+//filter and map function in js

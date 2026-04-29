@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Memory Card Game</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:Arial;
+    background:linear-gradient(45deg,#141e30,#243b55);
+    color:white;
+}
+
+h1{
+    margin-top:20px;
+}
+
+#moves{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.game{
+    width:400px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.card{
+    width:90px;
+    height:90px;
+    background:#1e90ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    cursor:pointer;
+    border-radius:10px;
+    transform:rotateY(0deg);
+    transition:0.5s;
+}
+
+.card.flip{
+    background:white;
+    color:black;
+    transform:rotateY(180deg);
+}
+
+.card.matched{
+    background:limegreen;
+    color:white;
+    cursor:default;
+}
+</style>
+
+</head>
+<body>
+
+<h1>🧠 Memory Card Matching Game</h1>
+<div id="moves">Moves: 0</div>
+<div class="game" id="game"></div>
+
+<script>
+
+const symbols = ["🍎","🍌","🍇","🍓","🍎","🍌","🍇","🍓"];
+let shuffled = symbols.sort(()=>0.5 - Math.random());
+
+const game = document.getElementById("game");
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let moves = 0;
+
+function createBoard(){
+    shuffled.forEach(symbol=>{
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.symbol = symbol;
+        card.innerText = "";
+        card.addEventListener("click", flipCard);
+        game.appendChild(card);
+    });
+}
+
+function flipCard(){
+    if(lockBoard || this.classList.contains("matched")) return;
+
+    this.classList.add("flip");
+    this.innerText = this.dataset.symbol;
+
+    if(!firstCard){
+        firstCard = this;
+        return;
+    }
+
+    secondCard = this;
+    moves++;
+    document.getElementById("moves").innerText = "Moves: " + moves;
+
+    checkMatch();
+}
+
+function checkMatch(){
+    if(firstCard.dataset.symbol === secondCard.dataset.symbol){
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+        resetBoard();
+    }
+    else{
+        lockBoard = true;
+        setTimeout(()=>{
+            firstCard.classList.remove("flip");
+            secondCard.classList.remove("flip");
+            firstCard.innerText = "";
+            secondCard.innerText = "";
+            resetBoard();
+        },1000);
+    }
+}
+
+function resetBoard(){
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+}
+
+createBoard();
+
+</script>
+
+</body>
+</html>

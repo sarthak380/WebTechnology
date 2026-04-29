@@ -1,0 +1,18 @@
+// list of activities for exp2.js
+//Array declaration
+//ex of array
+//fun declaration
+//object declaration
+
+//reverse number
+//check palindrome number
+//fibonacci series
+//count vowels in string
+
+
+//array - find largest number in array
+// remove duplicates from array
+//find missing number in array
+
+//fun to find even odd number
+//fun to find sum of array

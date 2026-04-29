@@ -1,0 +1,17 @@
+express is an minimal nad flxibale web appliction  framwork of node js thaat devlement of web servare and api
+fechares:
+    1.routing
+    2.midelwarirsupport
+    3.requaest and respons handling 
+    4.rest api creation
+    5.templet rendaring
+
+nod:node package manager
+diff package.js vs package.lock.json
+diff dev dependancy and dependancy
+
+roting refares to  an detarming  how an applction to respons to an client rqquest to spcific url and http  method 
+url path http method 
+
+midelavare =is an function are an function that exzuquates during bthe life cycle the requaest befor the sendinf the final respons they have 
+asses to reqest respons and next 
