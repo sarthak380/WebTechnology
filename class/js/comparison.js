@@ -33,8 +33,8 @@ console.log(a < b);
 console.log(a >= b);
 console.log(a <= b);
 
-let str1 = "shri";
-let str2 = "shriprasad";
+let str1 = "sarthak";
+let str2 = "sarth";
 
 console.log(str1 == str2);
 console.log(str1 === str2);

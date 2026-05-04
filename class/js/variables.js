@@ -26,7 +26,7 @@ const c = 70;
 // These store single values
 
 let numberType = 104;        // number
-let stringType = "Shri";   // string
+let stringType = "om";   // string
 let booleanType = true;     // boolean
 let nullType = null;        // null
 let undefinedType;          // undefined
@@ -37,7 +37,7 @@ let bigIntType = 104n;      // bigint
 // 2. Non-Primitive Data Types
 // These store multiple values or complex data
 
-let objectType = { name: "Shri", age: 21 }; // object
+let objectType = { name: "om", age: 21 }; // object
 let arrayType = [1, 2, 3, 4];              // array
 let functionType = function () {           // function
   return "Hello";
@@ -47,7 +47,7 @@ let functionType = function () {           // function
 
 // Variable Declaration and typeof Operator
 let aa = 104;
-let ab = "Shri";
+let ab = "om";
 let ac = false;
 let ad = null;
 let ae;

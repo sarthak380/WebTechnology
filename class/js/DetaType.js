@@ -7,16 +7,16 @@ const a=[1,2,3,4,5];
 console.log(a);
 
 const myobj={
-    fname:"Ganesh",
+    fname:"sarthak",
     age:24,
-    email:  "ganesh@example.com"
+    email:  "sarthak@example.com"
 }
 console.log(myobj.fname);
 console.log(myobj.age);
 console.log(myobj.email);
 //function
 function call(){
-    console.log("Hey Ganesh");
+    console.log("Hey sarthak");
 }
 call();
 

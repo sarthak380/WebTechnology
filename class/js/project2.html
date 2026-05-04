@@ -1,79 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Age Calculator</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 100px;
-            background-color: #f0f8ff;
-        }
+<title>Memory Card Game</title>
 
-        h1 {
-            color: #333;
-        }
+<style>
+body{
+    text-align:center;
+    font-family:Arial;
+    background:linear-gradient(45deg,#141e30,#243b55);
+    color:white;
+}
 
-        input {
-            padding: 8px;
-            font-size: 16px;
-            width: 200px;
-        }
+h1{
+    margin-top:20px;
+}
 
-        button {
-            padding: 8px 15px;
-            font-size: 16px;
-            margin-left: 10px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-        }
+#moves{
+    font-size:20px;
+    margin-bottom:10px;
+}
 
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-    </style>
+.game{
+    width:400px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.card{
+    width:90px;
+    height:90px;
+    background:#1e90ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    cursor:pointer;
+    border-radius:10px;
+    transform:rotateY(0deg);
+    transition:0.5s;
+}
+
+.card.flip{
+    background:white;
+    color:black;
+    transform:rotateY(180deg);
+}
+
+.card.matched{
+    background:limegreen;
+    color:white;
+    cursor:default;
+}
+</style>
+
 </head>
-
 <body>
 
-    <h1>Age Calculator</h1>
+<h1>🧠 Memory Card Matching Game</h1>
+<div id="moves">Moves: 0</div>
+<div class="game" id="game"></div>
 
-    <input type="number" id="birthYear" placeholder="Enter Birth Year">
-    <button onclick="calculateAge()">Calculate</button>
+<script>
 
-    <div id="result"></div>
+const symbols = ["🍎","🍌","🍇","🍓","🍎","🍌","🍇","🍓"];
+let shuffled = symbols.sort(()=>0.5 - Math.random());
 
-    <script>
-        function calculateAge() {
+const game = document.getElementById("game");
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let moves = 0;
 
-            
-            let birthYear = document.getElementById("birthYear").value;
-            let result = document.getElementById("result");
+function createBoard(){
+    shuffled.forEach(symbol=>{
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.symbol = symbol;
+        card.innerText = "";
+        card.addEventListener("click", flipCard);
+        game.appendChild(card);
+    });
+}
 
-            if (birthYear === "") {
-                result.innerHTML = "Please enter your birth year!";
-                result.style.color = "red";
-                return;
-            }
+function flipCard(){
+    if(lockBoard || this.classList.contains("matched")) return;
 
-           
-            let currentYear = new Date().getFullYear();
+    this.classList.add("flip");
+    this.innerText = this.dataset.symbol;
 
-            let age = currentYear - birthYear;
+    if(!firstCard){
+        firstCard = this;
+        return;
+    }
 
-            if (age < 0) {
-                result.innerHTML = "Invalid birth year!";
-                result.style.color = "red";
-            } else {
-                result.innerHTML = "Your Age is: " + age + " years";
-                result.style.color = "green";
-            }
-        }
-    </script>
+    secondCard = this;
+    moves++;
+    document.getElementById("moves").innerText = "Moves: " + moves;
+
+    checkMatch();
+}
+
+function checkMatch(){
+    if(firstCard.dataset.symbol === secondCard.dataset.symbol){
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+        resetBoard();
+    }
+    else{
+        lockBoard = true;
+        setTimeout(()=>{
+            firstCard.classList.remove("flip");
+            secondCard.classList.remove("flip");
+            firstCard.innerText = "";
+            secondCard.innerText = "";
+            resetBoard();
+        },1000);
+    }
+}
+
+function resetBoard(){
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+}
+
+createBoard();
+
+</script>
 
 </body>
 </html>

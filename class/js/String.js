@@ -14,7 +14,7 @@ console.log(gameCount.toLowerCase());
 console.log(gameCount.charAt(5));
 
 
-const sname="             sarthak patil";
+const sname="sarthak patil";
 console.log(sname.trim());
 
 

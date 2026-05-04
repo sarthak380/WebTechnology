@@ -64,7 +64,7 @@ console.log(10*5)
 console.log(10%5)
 
 let str1="Hello "
-let str2="Shri..!!!"
+let str2="sarthak..!!!"
 console.log(str1+str2);
 console.log("1"+2)
 console.log("1"+2+2)
